@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalls de l'empresa</title>
+</head>
+<body>
+    <h1>Detalls de l'empresa</h1>
+    <div th:if="${empresa}">
+        <h2 th:text="${empresa.nom}"></h2>
+        <p th:text="${empresa.adreça}"></p>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Cognoms</th>
+                <th>Cicle</th>
+                <th>Modalitat</th>
+                <th>Estat</th>
+            </tr>
+            <tr th:each="alumne : ${empresa.alumnes}">
+                <td th:text="${alumne.nom}"></td>
+                <td th:text="${alumne.cognoms}"></td>
+                <td th:text="${alumne.cicle}"></td>
+                <td th:text="${alumne.modalitat}"></td>
+                <td th:text="${alumne.estat}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${not empresa}">
+        <p>No s'ha trobat cap empresa amb el
